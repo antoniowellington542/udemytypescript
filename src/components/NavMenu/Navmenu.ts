@@ -1,5 +1,7 @@
-const template: HTMLTemplateElement = document.createElement('template');
-template.innerHTML = `
+import { LitElement, html} from 'lit';
+import {customElement} from 'lit/decorators.js'
+
+const template = html `
     <style>
     .menu__icon{
         background-image: url('/src/img/Menu.svg');
@@ -122,13 +124,9 @@ template.innerHTML = `
     </ul>
 `;
 
-export default class NavMenu extends HTMLElement {
-  constructor() {
-    super();
-
-    console.log('criado');
-
-    this.attachShadow({ mode: 'open' });
-    this.shadowRoot?.appendChild(template.content.cloneNode(true));
+@customElement('nav-menu')
+export default class NavMenu extends LitElement {
+  render(){
+    return template;
   }
 }

@@ -1,5 +1,7 @@
-const template: HTMLTemplateElement = document.createElement('template');
-template.innerHTML = `
+import { LitElement, html, render} from 'lit';
+import {customElement} from 'lit/decorators.js'
+
+const template = html`
     <style>
         #header{
             width: 100%;
@@ -9,17 +11,16 @@ template.innerHTML = `
         }
     </style>
     <div id='header'>
-        <nav-menu></nav-menu>
+        <h1>oi</h1>
     </div>
-`;
+  `;
 
-export default class Header extends HTMLElement {
-  constructor(){
-    super();
 
-    this.attachShadow({mode: 'open'});
-    this.shadowRoot?.appendChild(template.content.cloneNode(true));
-  }
+@customElement('header-top')
+export default class Header extends LitElement {
+    render(){
+        return template;
+    }
 }
 
 
